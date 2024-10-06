@@ -13,6 +13,7 @@
     "@tensorflow/tfjs": "^4.21.0",
     "@tensorflow/tfjs-node": "^4.21.0",
     "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "express": "^4.21.0",
     "express-rate-limit": "^7.4.1",
     "sentiment": "^5.0.2"

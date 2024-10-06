@@ -4,6 +4,13 @@ const rateLimit = require('express-rate-limit');  // Import rate-limiting packag
 
 const app = express();
 const sentiment = new Sentiment();
+const cors = require('cors');
+
+app.use(cors()); // This will enable CORS for all routes and all origins
+const corsOptions = {
+  origin: 'https://mchowdhury23.github.io/sentiment-analysis-api/', // Replace this with your GitHub Pages URL
+};
+app.use(cors(corsOptions));
 
 // Rate Limiting: Allows 100 requests per 15-minute window per IP
 const limiter = rateLimit({
