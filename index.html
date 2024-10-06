@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    
+    <form id="sentiment-form">
+        <textarea id="user-input" rows="4" cols="50" placeholder="Enter your text here..."></textarea><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+    
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        const form = document.getElementById('sentiment-form');
+        const resultElement = document.getElementById('result');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+
+            try {
+                const response = await fetch('https://sentiment-analysis-api-c78z.onrender.com/sentiment?text=' + encodeURIComponent(userInput));
+                const data = await response.json();
+                resultElement.textContent = 'Sentiment: ' + data.sentiment;
+            } catch (error) {
+                resultElement.textContent = 'Error occurred: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
